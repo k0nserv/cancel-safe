@@ -14,7 +14,6 @@ impl<F> Safe<F> {
 
 impl<F, O> Future for Safe<F>
 where
-    F: Future,
     F: Future<Output = O>,
 {
     type Output = O;
