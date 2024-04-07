@@ -1,0 +1,4 @@
+[workspace]
+members = [ "cancel-safe",
+  'cancel-safe-proc',
+]
