@@ -13,7 +13,7 @@ async fn foo() {
 
 async fn assert_cancel_safe<F, O>(f: F) -> O
 where
-    F: Future<Output = O> + cancel_safe::CancelSafe,
+    F: Future<Output = O> + cancel_safe::AssertCancelSafe,
 {
     f.await
 }
