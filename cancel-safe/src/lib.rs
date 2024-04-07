@@ -1,6 +1,7 @@
 use core::future::Future;
 
-pub trait AssertCancelSafe: Future {}
+pub trait AssertCancelSafe {}
+pub trait CancelSafeFuture: Future + AssertCancelSafe {}
 
 #[repr(transparent)]
 pub struct Safe<F>(F);
@@ -32,4 +33,5 @@ impl<F: Unpin> Unpin for Safe<F> {}
 unsafe impl<F: Send> Send for Safe<F> {}
 unsafe impl<F: Sync> Sync for Safe<F> {}
 
-impl<F> AssertCancelSafe for Safe<F> where F: Future {}
+impl<F> AssertCancelSafe for Safe<F> {}
+impl<F> CancelSafeFuture for Safe<F> where F: Future {}

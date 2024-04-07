@@ -73,5 +73,5 @@ fn desugar(sig: &mut Signature) {
         ReturnType::Type(rarrow, ret) => (*rarrow, quote!(#ret)),
     };
 
-    sig.output = parse_quote!(#rarrow impl ::cancel_safe::AssertCancelSafe<Output = #ret>);
+    sig.output = parse_quote!(#rarrow impl ::cancel_safe::CancelSafeFuture<Output = #ret>);
 }
